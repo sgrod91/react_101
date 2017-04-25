@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Babel Quickstart</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel" data-presets="react">
+
+    class MyThing extends React.Component{
+      render() {
+        return <div>Hello, world!</div>;
+      }
+    }
+
+    class Hello extends React.Component {
+      render() {
+        return <h1>Hello, {this.props.name}!</h1>;
+      }
+    }
+
+    ReactDOM.render(
+      <Hello name = "Albert"/>, document.getElementById('root')
+      );
+
+    class BSButton extends React.Component {
+      render() {
+        let classNames = ['btn'];
+        if (this.props.type) {
+          classNames.push('btn-' + this.props.type);
+        } else {
+          classNames.push('btn-defualt');
+        }
+        if (this.props.size) {
+          classNames.push('btn-' + this.props.size);
+        }
+        return (
+          <button className={classNames.join(' ')}>
+            {this.props.children}
+          </button>
+        );
+      }
+    }
+
+    ReactDOM.render(
+      <form>
+        <BSButton type="danger">Click meeee</BSButton>
+        <BSButton type="success">We did it</BSButton>
+        <BSButton>Click me</BSButton>
+        <BSButton type="info" size="xs">If you must</BSButton>
+        <BSButton type="info" size="sm">If you must</BSButton>
+        <BSButton type="info" size="lg">If you must</BSButton>
+      </form>,
+      document.getElementById('root')
+    );
+
+    </script>
+  </body>
+</html>
